@@ -1,11 +1,11 @@
 /*
 Bước 1: Đưa toàn bộ các phút gây cấn trong chương trình vào mảng động.
 
-Bước 2: Gọi T == 0 là thời điểm Limak bắt đầu xem chương trình. 
+Bước 2: Gọi T = 0 là thời điểm Limak bắt đầu xem chương trình. 
 Xét lần lượt các phút gây cấn thứ i:
 
     + Nếu T + 15 < thời điểm xuất hiện phút gây cấn thứ i, 
-    đồng nghĩa với việc đã qua 1515 phút mà không xuất hiện đoạn gây cấn mới, 
+    đồng nghĩa với việc đã qua 15 phút mà không xuất hiện đoạn gây cấn mới, 
     thì (T + 15) chính là thời điểm Limak tắt TV -- cũng là số phút tối đa
     mà cậu xem chương trình.
     + Ngược lại, ta cập nhật giá trị T là thời gian phút gây cấn mới xuất hiện.
