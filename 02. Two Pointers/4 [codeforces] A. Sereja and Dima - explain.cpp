@@ -17,39 +17,42 @@ Sử dụng kỹ thuật Two Pointers với hai biến chạy i và j đại di�
 
 Độ phức tạp: O(n) với n là số lượng thẻ bài.
 */
+
 #include <iostream>
 #include <vector>
-
 using namespace std;
 
-#define MAX 1000
-int cards[MAX];
-int main() {
+int main()
+{
     int n;
     cin >> n;
-    for (int i = 0; i < n; i++) {
+    vector<int> cards(n);
+
+    for (int i = 0; i < n; i++)
+    {
         cin >> cards[i];
     }
 
-    int i = 0;
-    int j = n - 1;
-    int points[] = {0, 0};
-    int turn = 0;
-    int take = 0;
-    while (i <= j) {
-        if (cards[i] >= cards[j]) {
-            take = cards[i];
+    int res[2] = {0};
+    int player = 0;
+    int i = 0, j = n - 1;
+
+    while (i <= j)
+    {
+        if (cards[i] > cards[j])
+        {
+            res[player] += cards[i];
             i++;
-        } else {
-            take = cards[j];
+        }
+        else
+        {
+            res[player] += cards[j];
             j--;
         }
 
-        points[turn] += take;
-        turn = 1 - turn;
+        player = 1 - player;
     }
 
-    cout << points[0] << " " << points[1] << endl;
-
+    cout << res[0] << " " << res[1];
     return 0;
 }

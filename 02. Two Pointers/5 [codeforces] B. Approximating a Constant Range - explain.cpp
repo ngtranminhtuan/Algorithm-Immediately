@@ -25,43 +25,45 @@ Như vậy, ta có cách giải quyết bài toán này như sau:
 #include <iostream>
 #include <vector>
 using namespace std;
+const int MAX = 1e5 + 5;
 
-#define MAX 100000
-int arr[MAX];
+int fre[MAX];
 
-int main() {
+int main()
+{
     int n;
     cin >> n;
-    for (int i = 0; i < n; i++) {
-        cin >> arr[i];
+    vector<int> a(n);
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
     }
 
-    int i = 0, j = 0;
-    int best = 0;
-    int maxIndex = 0, minIndex = 0;
-    while (i < n) {
-        // maxIndex, minIndex as right side as possible
-        if (arr[i] >= arr[maxIndex])
-            maxIndex = i;
-        if (arr[i] <= arr[minIndex])
-            minIndex = i;
+    int j = 0, diff = 0;
+    int longest_range = 0;
 
-        if (arr[maxIndex] - arr[minIndex] > 1) {
-            // Find alternative minIndex
-            if (arr[maxIndex] == arr[i]) {
-                j = ++minIndex;
-            }
-            // Find alternative maxIndex
-            else if (arr[minIndex] == arr[i]) {
-                j = ++maxIndex;
-            }
-        } else {
-            best = max(best, i - j + 1);
-            i++;
+    for (int i = 0; i < n; i++)
+    {
+        if (fre[a[i]] == 0)
+        {
+            diff++;
         }
+        fre[a[i]]++;
+
+        while (j < n && diff > 2)
+        {
+            if (fre[a[j]] == 1)
+            {
+                diff--;
+            }
+            fre[a[j]]--;
+            j++;
+        }
+
+        longest_range = max(longest_range, i - j + 1);
     }
 
-    cout << best << endl;
-
+    cout << longest_range;
     return 0;
 }
