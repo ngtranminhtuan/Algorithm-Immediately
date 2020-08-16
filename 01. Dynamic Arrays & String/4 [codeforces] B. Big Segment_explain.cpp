@@ -21,6 +21,7 @@ Ta có các bước giải bài này như sau:
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 const int INF = 1e9 + 5;
  

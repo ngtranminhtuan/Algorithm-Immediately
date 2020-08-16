@@ -24,6 +24,7 @@ Như vậy, ta có cách giải quyết bài toán này như sau:
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 const int MAX = 1e5 + 5;
 
