@@ -8,6 +8,7 @@ using namespace std;
 
 #define MAX 2000
 int h[MAX];
+
 int main()
 {
     int n, a, b;
