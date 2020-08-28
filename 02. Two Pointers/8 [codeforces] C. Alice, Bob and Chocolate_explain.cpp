@@ -18,7 +18,7 @@ lưu thời điểm ăn của cả hai.
             chocolate thứ j thì Alice sẽ ăn thanh chocolate tại 
             vị trí i.
             Ngược lại Bob sẽ ăn thanh chocolate tại vị trí j.
-        * Cập nhật thời điểm ăn của từng người và hai biến chạy ii, jj.
+        * Cập nhật thời điểm ăn của từng người và hai biến chạy i, j.
     
     Bước 4: Số thanh chocolate mà Alice đã ăn được chính bằng giá 
     trị của i và của Bob là (n−i).
