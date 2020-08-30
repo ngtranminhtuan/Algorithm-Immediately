@@ -11,10 +11,10 @@ Tóm lại, ta có cách làm như sau:
 
     + Bước 1: Đưa thông tin chiều dài các thanh gỗ vào mảng.
     + Bước 2: Sắp xếp mảng tăng dần.
-    + Bước 3: Lấy thanh gỗ đầu tiên làm gốc, ta sử dụng một biến đếm số lượng thanh gỗ phân biệt, khởi tạo bằng 11 (tức xem phần tử ở đầu mảng là phần tử phân biệt đầu tiên). Biến đếm số lượng thanh gỗ có cùng chiều dài với thanh gỗ đang xét, khởi tạo bằng 11.
+    + Bước 3: Lấy thanh gỗ đầu tiên làm gốc, ta sử dụng một biến đếm số lượng thanh gỗ phân biệt, khởi tạo bằng 1 (tức xem phần tử ở đầu mảng là phần tử phân biệt đầu tiên). Biến đếm số lượng thanh gỗ có cùng chiều dài với thanh gỗ đang xét, khởi tạo bằng 1.
     + Bước 4: Lần lượt duyệt qua các thanh gỗ có chiều dài từ bé đến lớn, không tính thanh đầu tiên:
-    Nếu thanh gỗ này có cùng chiều dài với thanh trước đó thì ta tăng biến đếm số lượng thanh gỗ có cùng chiều dài lên 11. Đồng thời, so sánh số lượng thanh gỗ có cùng chiều dài hiện tại với số lượng lớn nhất và liên tục cập nhật lại.
-    Ngược lại, tăng biến đếm số lượng phần tử phân biệt lên 11 và cập nhật lại số lượng thanh gỗ có cùng chiều dài với thanh gỗ đang xét bằng 11.
+    Nếu thanh gỗ này có cùng chiều dài với thanh trước đó thì ta tăng biến đếm số lượng thanh gỗ có cùng chiều dài lên 1. Đồng thời, so sánh số lượng thanh gỗ có cùng chiều dài hiện tại với số lượng lớn nhất và liên tục cập nhật lại.
+    Ngược lại, tăng biến đếm số lượng phần tử phân biệt lên 1 và cập nhật lại số lượng thanh gỗ có cùng chiều dài với thanh gỗ đang xét bằng 1.
     + Bước 5: In kết quả. 
 
 Độ phức tạp: O(NlogN) với NN là số lượng thanh gỗ.
