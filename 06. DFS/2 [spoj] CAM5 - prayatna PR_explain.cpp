@@ -1,6 +1,6 @@
 /*
 Giải thích
-    + Case 1 : 00 is friends with 11; 11 is friends with 22; so if we pass the news to 00 & 33, news will pass it to the entire NN peers.
+    + Case 1 : 0 is friends with 1; 1 is friends with 2; so if we pass the news to 0 & 3, news will pass it to the entire N peers.
 
     + Case 2 : no one is friends with any one. So we have to meet every one in person.
 
