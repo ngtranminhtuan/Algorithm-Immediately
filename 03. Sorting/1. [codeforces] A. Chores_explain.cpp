@@ -36,3 +36,9 @@ int main()
     cout << h[b] - h[b - 1];
     return 0;
 }
+
+//Python
+n, a, b = map(int, input().split())
+h = list(map(int, input().split()))
+h.sort()
+print(h[b] - h[b - 1])

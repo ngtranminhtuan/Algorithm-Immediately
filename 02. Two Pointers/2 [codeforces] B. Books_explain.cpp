@@ -72,3 +72,22 @@ int main()
     cout << max_book;
     return 0;
 }
+
+// python
+n, t = map(int, input().split())
+a = list(map(int, input().split()))
+ 
+j = 0
+read_books = max_books = 0
+ 
+for i in range(n):
+    while t < a[i]:
+        t += a[j]
+        j += 1
+        read_books -= 1
+ 
+    t -= a[i] 
+    read_books += 1
+    max_books = max(max_books, read_books) 
+ 
+print(max_books)

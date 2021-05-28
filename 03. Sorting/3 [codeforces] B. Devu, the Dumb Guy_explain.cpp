@@ -46,3 +46,16 @@ int main()
     cout << min_time;
     return 0;
 }
+
+// PYthon
+n, x = map(int, input().split())
+c = list(map(int, input().split()))
+c.sort()
+min_time = 0
+
+for chapters in c:
+    min_time += chapters * x
+    if x > 1:
+        x -= 1
+        
+print(min_time)

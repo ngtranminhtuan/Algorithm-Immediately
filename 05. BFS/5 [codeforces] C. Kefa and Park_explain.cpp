@@ -83,3 +83,47 @@ int main()
     cout << BFS(1);
     return 0;
 }
+
+//-------
+import queue
+ 
+MAX = 100000 + 5
+cat = [0] * MAX
+visited = [False] * MAX
+graph = [[] for _ in range(MAX)]
+ 
+def BFS(s):
+    nrestaurants = 0
+    q = queue.Queue()
+    visited[s] = True
+    q.put(s)
+ 
+    cat[s] = (1 if a[s] == 1 else 0)
+ 
+    while not q.empty():
+        u = q.get()
+ 
+        for v in graph[u]:
+            if not visited[v]:
+                visited[v] = True
+             
+                if a[v] == 1:
+                    cat[v] = cat[u] + 1
+                 
+                if cat[v] <= m:
+                    if len(graph[v]) == 1:
+                        nrestaurants += 1
+                    else:
+                        q.put(v)
+     
+    return nrestaurants
+ 
+n, m = map(int, input().split())
+a = [None] + list(map(int, input().split()))
+ 
+for i in range(1, n):
+    u, v = map(int, input().split())
+    graph[u].append(v)
+    graph[v].append(u)
+ 
+print(BFS(1))

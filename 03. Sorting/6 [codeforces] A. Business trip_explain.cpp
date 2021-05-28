@@ -45,3 +45,18 @@ int main()
     cout << (k <= 0 ? n_months : -1);
     return 0;
 }
+
+// ---------
+k = int(input())
+a = list(map(int, input().split()))
+a.sort(reverse=True)
+n_months = 0
+
+for height in a:
+    if k <= 0:
+        break
+    
+    n_months += 1
+    k -= height
+
+print(n_months if k <= 0 else -1)

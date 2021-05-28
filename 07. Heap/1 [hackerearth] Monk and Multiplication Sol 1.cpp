@@ -92,3 +92,61 @@ int main() {
     }
     return 0;
 }
+
+// Standard Code
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int main() {
+    int x, n;
+    priority_queue<int> pq;
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        cin >> x;
+        pq.push(x);
+
+        if (i < 2) {
+            cout << -1 << endl;
+        }
+        else {
+            int first = pq.top();
+            pq.pop();
+            int second = pq.top();
+            pq.pop();
+            int third = pq.top();
+            pq.pop();
+
+            cout << 1LL * first * second * third << endl;
+
+            pq.push(first);
+            pq.push(second);
+            pq.push(third);
+        }
+    }
+    return 0;
+}
+
+//------------
+import queue
+
+n = int(input())
+a = list(map(int, input().split()))
+pq = queue.PriorityQueue()
+
+for i in range(n):
+	pq.put(-a[i])
+
+	if i < 2:
+		print(-1)
+	else:
+		first = -pq.get()
+		second = -pq.get()
+		third = -pq.get()
+
+		print(first * second * third)
+
+		pq.put(-first)
+		pq.put(-second)
+		pq.put(-third)

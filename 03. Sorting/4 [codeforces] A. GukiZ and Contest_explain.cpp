@@ -58,3 +58,17 @@ int main()
 
     return 0;
 }
+
+// Python
+n = int(input())
+ratings = list(map(int, input().split()))
+sorted_ratings = sorted(ratings, reverse=True)
+ranked = [0] * 2005
+
+for i in range(n):
+    rating = sorted_ratings[i]
+    if not ranked[rating]:
+        ranked[rating] = i + 1
+
+for rating in ratings:
+    print(ranked[rating], end=' ')

@@ -61,3 +61,19 @@ int main()
     cout << i << " " << n - i;
     return 0;
 }
+
+// Python
+n = int(input())
+chocolate = list(map(int, input().split()))
+t_alice = t_bob = 0
+i, j = 0, n - 1
+
+while i <= j:
+    if t_alice + chocolate[i] <= t_bob + chocolate[j]:
+        t_alice += chocolate[i]
+        i += 1
+    else:
+        t_bob += chocolate[j]
+        j -= 1
+
+print(i, n - i)

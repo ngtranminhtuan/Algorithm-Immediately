@@ -4,37 +4,61 @@
 
 #include <iostream>
 #include <queue>
-
 using namespace std;
 
 int main() {
-    int n;
+    priority_queue<int, vector<int>, greater<int>> pq;
+    int n, x;
+    
     while (true) {
         cin >> n;
-        if (n == 0)
-            break;
 
-        priority_queue<int, vector<int>, greater<int>> pq;
-        int x;
+        if (n == 0) {
+            break;
+        }
+
         for (int i = 0; i < n; i++) {
             cin >> x;
             pq.push(x);
         }
 
-        long long totalCost = 0;
-        long long cost;
-        while (pq.size() > 1) {
-            cost = pq.top();
-            pq.pop();
-            cost += pq.top();
-            pq.pop();
+        long long ans = 0;
 
-            totalCost += cost;
-            pq.push(cost);
+        while (pq.size() > 1) {
+            int a = pq.top();
+            pq.pop();
+            int b = pq.top();
+            pq.pop();
+            ans += a + b;
+            pq.push(a + b);
         }
 
-        cout << totalCost << endl;
+        cout << ans << endl;
+        pq.pop();
     }
-
     return 0;
 }
+
+// ----------
+import queue
+pq = queue.PriorityQueue()
+
+while True:
+    n = int(input())
+    
+    if n == 0:
+        break
+
+    for x in input().split():
+        pq.put(int(x))
+    
+    ans = 0
+    
+    while pq.qsize() > 1:
+        a = pq.get()
+        b = pq.get()
+        ans += a + b
+        pq.put(a + b)
+
+    print(ans)
+    pq.get()

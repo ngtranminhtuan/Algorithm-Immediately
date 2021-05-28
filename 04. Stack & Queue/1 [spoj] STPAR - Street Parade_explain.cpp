@@ -81,3 +81,30 @@ int main()
     }
     return 0;
 }
+
+//-------
+while True:
+    n = int(input())
+    if n == 0:
+        break
+    trucks = list(map(int, input().split()))
+    side_trucks = []
+    ordering = 1
+    i = 0
+ 
+    while i < n:
+        if trucks[i] == ordering:
+            ordering += 1
+            i += 1
+        elif side_trucks and side_trucks[-1] == ordering:
+            ordering += 1
+            side_trucks.pop()
+        else:
+            side_trucks.append(trucks[i])
+            i += 1
+     
+    while side_trucks and side_trucks[-1] == ordering:
+        ordering += 1
+        side_trucks.pop()
+ 
+    print('yes' if ordering == n + 1 else 'no')

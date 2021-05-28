@@ -105,7 +105,7 @@ int main() {
 }
 
 
-/*Cách 2*/
+/*Cách 2 - Standard Code*/
 
 #include <iostream>
 #include <queue>
@@ -201,3 +201,26 @@ public class Solution {
         }
     }
 }
+
+//------------
+import queue
+
+q = int(input())
+pq = queue.PriorityQueue()
+pqRemove = queue.PriorityQueue()
+
+for i in range(q):
+    line = input()
+
+    if line[0] == '1':
+        value = int(line.split()[1])
+        pq.put(value)
+    elif line[0] == '2':
+        value = int(line.split()[1])
+        pqRemove.put(value)
+    else:
+        while not pqRemove.empty() and pq.queue[0] == pqRemove.queue[0]:
+            pq.get()
+            pqRemove.get()
+
+        print(pq.queue[0])

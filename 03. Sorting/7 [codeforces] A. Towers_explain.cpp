@@ -56,3 +56,20 @@ int main()
     cout << max_height << " " << n_towers;
     return 0;
 }
+
+//----------
+n = int(input())
+bars = list(map(int, input().split()))
+bars.sort()
+
+n_towers = max_height = cur_height = 1
+
+for i in range(1, n):
+    if bars[i] == bars[i - 1]:
+        cur_height += 1
+        max_height = max(max_height, cur_height)
+    else:
+        n_towers += 1
+        cur_height = 1
+
+print(max_height, n_towers)

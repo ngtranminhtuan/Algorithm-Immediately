@@ -2,57 +2,74 @@
 // Link: https://www.codechef.com/problems/RRATING
 
 
-#include <iostream>
-#include <queue>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    priority_queue<int, vector<int>, greater<int>> minHeap; // top value is current minimum one-third of array k elements
-    priority_queue<int> maxHeap;
-
-    int n, c, x;
+    int n, x, type, nreviews = 0;
+    priority_queue<int, vector<int>, greater<int>> top3;
+    priority_queue<int> rest;
     cin >> n;
 
-    int k = 0;
     while (n--) {
-        cin >> c;
-        switch (c) {
-            case 1: {
-                cin >> x;
-                k++;
-
-                // don't greater than current minimum one-third -> push to max heap
-                if (minHeap.empty() || x <= minHeap.top()) {
-                    maxHeap.push(x);
-                }
-                // greater than current minimum one-third -> pop current minHeap to maxHeap, push x to minHeap
-                else {
-                    maxHeap.push(minHeap.top());
-                    minHeap.pop();
-                    minHeap.push(x);
-                }
-
-                // push one more element to minHeap as minimum one-third of array k elements
-                if (k % 3 == 0) {
-                    minHeap.push(maxHeap.top());
-                    maxHeap.pop();
-                }
-                break;
+        cin >> type;
+    
+        if (type == 1) {
+            cin >> x;
+            nreviews++;
+    
+            if (!top3.empty() && top3.top() < x) {
+                rest.push(top3.top());
+                top3.pop();
+                top3.push(x);
             }
-            case 2: {
-                if (minHeap.empty()) {
-                    cout << "No reviews yet" << endl;
-                } else {
-                    cout << minHeap.top() << endl;
-                }
-                break;
+            else {
+                rest.push(x);
+            }
+    
+            if (nreviews % 3 == 0) {
+                top3.push(rest.top());
+                rest.pop();
+            }
+        }
+        else {
+            if (top3.empty()) {
+                cout << "No reviews yet" << endl;
+            }
+            else {
+                cout << top3.top() << endl;
             }
         }
     }
-
     return 0;
 }
+
+// ----------
+import heapq
+top3 = []
+rest = []
+nreviews = 0
+
+n = int(input())
+
+for _ in range(n):
+    line = list(map(int, input().split()))
+    type = line[0]
+    
+    if type == 1:
+        x = line[1]
+        nreviews += 1
+
+        if len(top3) != 0 and top3[0] < x:
+            heapq.heappush(rest, -heapq.heappop(top3))
+            heapq.heappush(top3, x)
+        else:
+            heapq.heappush(rest, -x)
+
+        if nreviews % 3 == 0:
+            heapq.heappush(top3, -heapq.heappop(rest))
+    else:
+        if len(top3) == 0:
+            print("No reviews yet")
+        else:
+            print(top3[0])

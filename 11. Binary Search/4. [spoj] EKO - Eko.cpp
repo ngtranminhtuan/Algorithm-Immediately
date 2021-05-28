@@ -52,3 +52,74 @@ int main() {
 
 	return 0;
 }
+
+// Standard
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+    vector<int> trees(n);
+
+    for (int i = 0; i < n; i++) {
+        cin >> trees[i];
+    }
+
+    int hmin = 0, hmax = 1e9 + 7;
+    long long sum;
+    int res = 0;
+
+    while (hmin <= hmax) {
+        int hmid = (hmin + hmax) / 2;
+        
+        sum = 0;
+        for (int &x : trees) {
+            sum += max(0, x - hmid);
+        }
+
+        if (sum >= m) {
+            res = hmid;
+            hmin = hmid + 1;
+        }
+        else {
+            hmax = hmid - 1;
+        }
+    }
+
+    cout << res;
+    return 0;
+}
+
+// Python
+import sys
+
+def inp():
+    return map(int, input().split(' '))
+
+def check(a, x):
+    sum = 0
+    for item in a:
+        sum += max(0, item - x)
+    return sum
+
+def BS_search(a, l, r, k):
+    ans = r
+    while l <= r:
+        mid = int( (l + r) / 2 )
+        if check(a, mid) >= k:
+            ans = mid
+            l = mid + 1
+        else:
+            r = mid - 1
+    return ans
+
+def solve():
+    n, k = inp()
+    a = list(inp())
+    vmin = 0
+    vmax = 1e9
+    print (BS_search(a, vmin, vmax, k))
+
+solve()

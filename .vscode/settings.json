@@ -4,6 +4,13 @@
         "stack": "cpp",
         "iostream": "cpp",
         "algorithm": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "*.tcc": "cpp",
+        "string": "cpp",
+        "list": "cpp",
+        "chrono": "cpp",
+        "limits": "cpp",
+        "valarray": "cpp",
+        "bitset": "cpp"
     }
 }

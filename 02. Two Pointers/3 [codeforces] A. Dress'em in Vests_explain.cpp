@@ -103,3 +103,24 @@ int main()
 
     return 0;
 }
+
+// Python
+n, m, x, y = map(int, input().split())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+v = []
+i = j = 0
+
+while i < n and j < m:
+   if a[i] - x <= b[j] <= a[i] + y:
+      v.append((i + 1, j + 1))
+      i += 1
+      j += 1
+   elif a[i] + y < b[j]:
+      i += 1
+   elif a[i] - x > b[j]:
+      j += 1
+
+print(len(v))
+for vest in v:
+    print(vest[0], vest[1])

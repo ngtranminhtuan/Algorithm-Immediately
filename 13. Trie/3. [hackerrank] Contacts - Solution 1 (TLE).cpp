@@ -102,3 +102,89 @@ int main() {
 
 	return 0;
 }
+// Python
+class TrieNode:
+    def __init__(self, c):
+        self.count = c
+        self.child = dict()
+        self.child.clear()
+
+def addContact(root, s):
+    for c in list(s):
+        if c in root.child:
+            root = root.child[c]
+        else:
+            root.child[c] = TrieNode(0)
+            root = root.child[c]
+        root.count += 1
+        
+
+def countContacts(root, s):
+    
+    for c in list(s):
+        if c in root.child:
+            root = root.child[c]
+        else:
+        	return 0
+    return root.count
+
+n = int(input())
+root = TrieNode(0)
+while (n > 0):
+    n -= 1
+    opt, arg = input().split()
+    
+    if opt[0] == 'a':
+        addContact(root, arg)
+    else:
+        print(countContacts(root, arg))
+
+//St
+#include <iostream>
+#include <string>
+#define K 26
+using namespace std;
+typedef struct Node* ref;
+struct Node {
+	ref child[K];
+	int count;
+	Node() {
+		for (int i = 0; i < K; i++)
+			child[i] = NULL;
+		count = 0;
+	}
+}* root;
+void addContact(string& s) {
+	ref p = root;
+	for (int i = 0; i < s.length(); i++) {
+		int c = s[i] - 'a';
+		if (!p->child[c])
+			p->child[c] = new Node;
+		p = p->child[c];
+		p->count++;
+	}
+}
+int countContacts(string& s) {
+	ref p = root;
+	for (int i = 0; i < s.length(); i++) {
+		int c = s[i] - 'a';
+		if (!p->child[c])
+			return 0;
+		p = p->child[c];
+	}
+	return p->count;
+}
+int main() {
+	int n;
+	cin >> n;
+	root = new Node;
+	while (n--) {
+		string opt, arg;
+		cin >> opt >> arg;
+		if (opt[0] == 'a')
+			addContact(arg);
+		else
+			cout << countContacts(arg) << endl;
+	}
+	delete root;
+}
