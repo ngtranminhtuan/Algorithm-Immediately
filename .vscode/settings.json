@@ -3,6 +3,7 @@
         "queue": "cpp",
         "stack": "cpp",
         "iostream": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "random": "cpp"
     }
 }

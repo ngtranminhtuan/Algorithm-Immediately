@@ -18,6 +18,10 @@ Chạy lần lượt qua hết các ký tự lấy số bước đi cộng lại
 #include <string>
 using namespace std;
  
+#include <iostream>
+#include <string>
+using namespace std;
+ 
 int main() {
     string wheel;
     cin >> wheel;
@@ -41,3 +45,21 @@ int main() {
     cout << count;
     return 0;
 }
+
+//Python 
+wheel = input()
+ 
+pointer = 'a'
+count = 0
+ 
+for c in wheel:
+    dist = abs(ord(pointer) - ord(c))
+     
+    if dist < 13:
+        count = count + dist
+    else:
+        count = count + (26 - dist)
+     
+    pointer = c
+ 
+print(count)
